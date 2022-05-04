@@ -10,5 +10,5 @@ import java.util.Date;
 public class UpdatePublicationResource {
     private String publicationdescription;
     private Long likes;
-    private Date date;
+    private Date registerdate;
 }

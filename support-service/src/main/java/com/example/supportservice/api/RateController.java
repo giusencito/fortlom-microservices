@@ -1,13 +1,13 @@
 package com.example.supportservice.api;
 
 
-import com.example.fortlomfas.backend.services.supporttoartistservice.resource.rate.CreateRateResource;
 
-import com.example.fortlomfas.backend.services.supporttoartistservice.resource.rate.UpdateRateResource;
 import com.example.supportservice.domain.model.entity.Rate;
 import com.example.supportservice.domain.service.RateService;
 import com.example.supportservice.mapping.RateMapper;
+import com.example.supportservice.resource.rate.CreateRateResource;
 import com.example.supportservice.resource.rate.RateResource;
+import com.example.supportservice.resource.rate.UpdateRateResource;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.fortlomfas.backend.services.supporttoartistservice.resource.rate;
+package com.example.supportservice.resource.rate;
 
 import lombok.Getter;
 import lombok.Setter;

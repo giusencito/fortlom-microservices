@@ -1,12 +1,12 @@
 package com.example.supportservice.mapping;
 
 
-import com.example.fortlomfas.backend.services.supporttoartistservice.resource.rate.CreateRateResource;
 
-import com.example.fortlomfas.backend.services.supporttoartistservice.resource.rate.UpdateRateResource;
 
 import com.example.supportservice.domain.model.entity.Rate;
+import com.example.supportservice.resource.rate.CreateRateResource;
 import com.example.supportservice.resource.rate.RateResource;
+import com.example.supportservice.resource.rate.UpdateRateResource;
 import com.example.supportservice.shared.mapping.EnhancedModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

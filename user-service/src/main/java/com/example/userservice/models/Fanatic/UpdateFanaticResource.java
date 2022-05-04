@@ -15,5 +15,5 @@ public class UpdateFanaticResource {
 
     private String password;
 
-    private String FanaticAlias;
+    private String fanaticalias;
 }

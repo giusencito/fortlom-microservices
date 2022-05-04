@@ -11,5 +11,5 @@ public class CreatePublicationResource {
 
     private String publicationdescription;
     private Long likes;
-    private Date date;
+    private Date registerdate;
 }

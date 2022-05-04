@@ -11,6 +11,6 @@ public class PublicationResource {
     private Long id;
     private String publicationdescription;
     private Long likes;
-    private Date date;
+    private Date registerdate;
     private Long artistid;
 }

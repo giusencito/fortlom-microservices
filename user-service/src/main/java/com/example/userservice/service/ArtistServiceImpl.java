@@ -41,6 +41,7 @@ public class ArtistServiceImpl implements ArtistService {
     @Override
     public Artist update(Long artistId, Artist request) {
         return artistRepository.findById(artistId).map(post->{
+
             post.setArtistfollowers(request.getArtistfollowers());
             artistRepository.save(post);
             return  post;

@@ -41,11 +41,14 @@ public class FanaticServiceImpl implements FanaticService {
 
     @Override
     public Fanatic update(Long artistId, Fanatic request) {
-        return fanaticRepository.findById(artistId).map(dueño ->
-                fanaticRepository.save(
-                        dueño.withFanaticalias(request.getFanaticalias())
+        return fanaticRepository.findById(artistId).map(dueño -> {
+            dueño.setFanaticalias(request.getFanaticalias());
 
-                )
+
+            fanaticRepository.save(dueño);
+            return dueño;
+        }
+
         ).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
     }
 
