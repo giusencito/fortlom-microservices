@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          default-label: feature/config-service
+          uri: https://github.com/giusencito/fortlom-microservices
+          search-paths: config-data
+
+  application:
+    name: config-service
+
+
+
