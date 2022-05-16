@@ -50,7 +50,7 @@ private RestTemplate restTemplate;
     public Publication create(Long artistId, Publication request) {
 
 
-        boolean check= restTemplate.getForObject("http://localhost:8001/api/v1/artists/check/"+artistId,boolean.class);
+        boolean check= restTemplate.getForObject("http://user-service/api/v1/artists/check/"+artistId,boolean.class);
         if(check){
 
             Date date = new Date();
