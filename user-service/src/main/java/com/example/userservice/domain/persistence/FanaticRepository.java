@@ -14,6 +14,7 @@ public interface FanaticRepository extends JpaRepository<Fanatic,Long>{
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);
+    boolean existsById(Long fanaticId);
 
     Optional<Person> findByUsernameOrEmail(String username,String email);
 }

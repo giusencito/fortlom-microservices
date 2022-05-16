@@ -5,11 +5,13 @@ import com.example.supportservice.domain.model.entity.Rate;
 import com.example.supportservice.domain.persistence.RateRepository;
 import com.example.supportservice.domain.service.RateService;
 import com.example.supportservice.shared.execption.ResourceNotFoundException;
+import com.example.supportservice.shared.execption.ResourcePerzonalized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import javax.validation.Validator;
@@ -21,7 +23,8 @@ public class RateServiceImpl implements RateService {
     @Autowired
     private RateRepository rateRepository;
 
-
+    @Autowired
+    private RestTemplate restTemplate;
 
     public RateServiceImpl() {
 
@@ -46,10 +49,22 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public Rate create(Long FanaticId, Long ArtistId, Rate request) {
+        boolean check1= restTemplate.getForObject("http://localhost:8001/api/v1/artists/check/"+ArtistId,boolean.class);
+        boolean check2= restTemplate.getForObject("http://localhost:8001/api/v1/fanatics/check/"+FanaticId,boolean.class);
+        if(check1&&check2){
 
-                    request.setArtistid(ArtistId);
-                    request.setFanaticid(FanaticId);
-                    return rateRepository.save(request);
+            request.setArtistid(ArtistId);
+            request.setFanaticid(FanaticId);
+            return rateRepository.save(request);
+
+
+        }else {
+            throw  new ResourcePerzonalized("id inexistente");
+
+        }
+
+
+
 
     }
 

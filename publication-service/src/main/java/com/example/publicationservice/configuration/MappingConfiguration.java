@@ -1,4 +1,5 @@
 package com.example.publicationservice.configuration;
+import com.example.publicationservice.mapping.EventMapper;
 import com.example.publicationservice.mapping.MultimediaMapper;
 import com.example.publicationservice.mapping.PublicationMapper;
 import org.springframework.context.annotation.Bean;
@@ -12,4 +13,9 @@ public class MappingConfiguration {
     }
     @Bean
     public MultimediaMapper multimediaMapper(){ return new MultimediaMapper(); }
+
+    @Bean
+    public EventMapper eventMapper(){
+        return new EventMapper();
+    }
 }

@@ -26,6 +26,10 @@ public class ArtistController {
     public Page<ArtistResource> getAllFanatics(Pageable pageable) {
         return mapper.modelListToPage(artistService.getAll(), pageable);
     }
+    @GetMapping("/check/{artistId}")
+    public boolean existsartistid(@PathVariable("artistId") Long artistId){
+        return artistService.existsartist(artistId);
+    }
     @GetMapping("{artistId}")
     public ArtistResource getUserById(@PathVariable("artistId") Long artistId) {
         return mapper.toResource(artistService.getById(artistId));

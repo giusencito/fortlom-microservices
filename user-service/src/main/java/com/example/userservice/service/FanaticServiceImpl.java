@@ -68,4 +68,9 @@ public class FanaticServiceImpl implements FanaticService {
 
         return fanaticRepository.save(artist);
     }
+
+    @Override
+    public boolean existsfanatic(Long fanaticid) {
+        return fanaticRepository.existsById(fanaticid);
+    }
 }

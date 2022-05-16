@@ -45,4 +45,10 @@ public class FanaticController {
     public ResponseEntity<?> deletePost(@PathVariable Long fanaticId) {
         return fanaticService.delete(fanaticId);
     }
+
+    @GetMapping("/check/{fanaticId}")
+    public boolean existsartistid(@PathVariable("fanaticId") Long fanaticId){
+        return fanaticService.existsfanatic(fanaticId);
+    }
+
 }

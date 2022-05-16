@@ -15,4 +15,5 @@ public interface ArtistService {
     Artist update(Long artistId, Artist request);
     ResponseEntity<?> delete(Long artistId);
     Artist create(Artist artist);
+    boolean existsartist(Long artistId);
 }

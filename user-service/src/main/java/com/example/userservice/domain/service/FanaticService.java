@@ -14,4 +14,5 @@ public interface FanaticService {
     Fanatic update(Long artistId, Fanatic request);
     ResponseEntity<?> delete(Long artistId);
     Fanatic create(Fanatic artist);
+    boolean existsfanatic(Long fanaticid);
 }

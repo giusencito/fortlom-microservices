@@ -16,6 +16,8 @@ public interface ArtistRepository extends JpaRepository<Artist,Long> {
 
     Boolean existsByEmail(String email);
 
+    boolean existsById(Long artistId);
+
     Optional<Person> findByUsernameOrEmail(String username,String email);
 }
 
