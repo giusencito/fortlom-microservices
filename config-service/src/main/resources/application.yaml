@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: feature/config-service
+          default-label: feature/discover-service
           uri: https://github.com/giusencito/fortlom-microservices
           search-paths: config-data
 
