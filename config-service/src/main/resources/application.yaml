@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: feature/gateway-service
+          default-label: feature/gateway
           uri: https://github.com/giusencito/fortlom-microservices
           search-paths: config-data
 
