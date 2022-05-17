@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/follows")
 public class FollowController {
     @Autowired
     private FollowService followService;
@@ -25,7 +25,7 @@ public class FollowController {
     @Autowired
     private ModelMapper mapping;
 
-    @GetMapping("/follows")
+    @GetMapping
     public Page<FollowResource> getAllFollows(Pageable pageable) {
         return mapper.modelListToPage(followService.getAll(), pageable);
     }

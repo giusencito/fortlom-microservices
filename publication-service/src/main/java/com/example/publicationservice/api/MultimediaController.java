@@ -20,7 +20,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity.BodyBuilder;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/multimedias")
 public class MultimediaController {
 
 
@@ -34,7 +34,7 @@ public class MultimediaController {
     private ModelMapper mapping;
 
 
-    @GetMapping("/multimedias")
+    @GetMapping
     public Page<MultimediaResource> getAllMultimedias(Pageable pageable) {
         return mapper.modelListToPage(multimediaService.getAll(), pageable);
     }

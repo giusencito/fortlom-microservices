@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/forumcomments")
 public class ForumCommentController {
 
     @Autowired
@@ -25,12 +25,12 @@ public class ForumCommentController {
     @Autowired
     private ModelMapper mapping;
 
-    @GetMapping("/forumcomments")
+    @GetMapping
     public Page<ForumCommentResource> getAllForumComments(Pageable pageable) {
         return mapper.modelListToPage(forumcommentService.getAll(), pageable);
     }
 
-    @GetMapping("/forumcomments/{forumcommentId}")
+    @GetMapping("/{forumcommentId}")
     public ForumCommentResource getForumCommentById(@PathVariable("forumcommentId") Long forumcommentId) {
         return mapper.toResource(forumcommentService.getById(forumcommentId));
     }

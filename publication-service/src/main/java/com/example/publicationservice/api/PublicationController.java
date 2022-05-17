@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/publications")
 public class PublicationController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class PublicationController {
     @Autowired
     private ModelMapper mapping;
 
-    @GetMapping("/publications")
+    @GetMapping
     public Page<PublicationResource> getAllPublications(Pageable pageable) {
         return mapper.modelListToPage(publicationService.getAll(), pageable);
     }

@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/events")
 public class EventController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class EventController {
     @Autowired
     private ModelMapper mapping;
 
-    @GetMapping("/events")
+    @GetMapping
     public Page<EventResource> getAllEvents(Pageable pageable) {
         return mapper.modelListToPage(eventService.getAllEvents(), pageable);
     }

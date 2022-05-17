@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/rates")
 public class RateController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class RateController {
 
     @Autowired
     private ModelMapper mapping;
-    @GetMapping("/rates")
+    @GetMapping
     public Page<RateResource> getAllRates(Pageable pageable) {
         return mapper.modelListToPage(rateService.getAll(), pageable);
     }

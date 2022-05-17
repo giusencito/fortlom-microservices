@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/comments")
 public class PublicationCommentController {
     @Autowired
     private PublicationCommentService commentService;
@@ -25,12 +25,12 @@ public class PublicationCommentController {
     @Autowired
     private ModelMapper mapping;
 
-    @GetMapping("/comments")
+    @GetMapping
     public Page<PublicationCommentResource> getAllComments(Pageable pageable) {
         return mapper.modelListToPage(commentService.getAll(), pageable);
     }
 
-    @GetMapping("/comments/{commentId}")
+    @GetMapping("{commentId}")
     public PublicationCommentResource getCommentById(@PathVariable("commentId") Long commentId) {
         return mapper.toResource(commentService.getById(commentId));
     }
