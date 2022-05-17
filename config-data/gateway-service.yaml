@@ -23,16 +23,16 @@ spring:
         - id: publication-service
           uri: lb://publication-service
           predicates:
-            - Path=/api/v1/publications/**, /api/v1/multimedias/**, /api/v1/events/**
+            - Path=/api/v1/**
         - id: support-service
           uri: lb://support-service
           predicates:
-            - Path=/api/v1/rates/**, /api/v1/follows/**
+            - Path=/api/v1/**
         - id: comment-service
           uri: lb://comment-service
           predicates:
-            - Path=/api/v1/comments/**, /api/v1/forumcomments/**
+            - Path=/api/v1/**
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/api/v1/artists/**, /api/v1/fanatics/**
+            - Path=/api/v1/**
