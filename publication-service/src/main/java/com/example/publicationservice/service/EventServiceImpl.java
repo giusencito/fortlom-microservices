@@ -44,7 +44,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event createEvent(Long Artist, Event request) {
 
-        boolean check= restTemplate.getForObject("http://user-service/api/v1/artists/check/"+Artist,boolean.class);
+        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+Artist,boolean.class);
         if(check){
             request.setArtistid(Artist);
             Date date = new Date();
