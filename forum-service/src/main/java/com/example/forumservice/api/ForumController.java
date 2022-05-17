@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/forumservice")
 public class ForumController {
     @Autowired
     private ForumService forumService;

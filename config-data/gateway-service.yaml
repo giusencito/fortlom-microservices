@@ -19,12 +19,12 @@ spring:
         - id: publication-service
           uri: lb://publication-service
           predicates:
-            - Path=/api/v1/**
+            - Path=/api/v1/contentservice/**
         - id: support-service
           uri: lb://support-service
           predicates:
-            - Path=/api/v1/**
+            - Path=/api/v1/supportservice/**
         - id: forum-service
           uri: lb://forum-service
           predicates:
-            - Path=/api/v1/**
+            - Path=/api/v1/forumservice/**

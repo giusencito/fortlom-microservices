@@ -20,7 +20,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity.BodyBuilder;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/contentservice")
 public class MultimediaController {
 
 

@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/contentservice")
 public class EventController {
 
     @Autowired
