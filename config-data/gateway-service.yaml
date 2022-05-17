@@ -27,4 +27,4 @@ spring:
         - id: forum-service
           uri: lb://forum-service
           predicates:
-            - Path=/api/v1/forumservice/**
+            - Path=/api/v1/**
