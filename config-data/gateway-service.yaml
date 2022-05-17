@@ -17,6 +17,6 @@ spring:
           enabled: true
       routes:
         - id: forum-service
-          uri: lb://forum-service
-          predicates:
+            uri: lb://forum-service
+            predicates:
               - Path=/api/v1/**
