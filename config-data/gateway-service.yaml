@@ -20,3 +20,19 @@ spring:
           uri: lb://forum-service
           predicates:
             - Path=/api/v1/**
+        - id: publication-service
+          uri: lb://publication-service
+          predicates:
+            - Path=/api/v1/**
+        - id: support-service
+          uri: lb://support-service
+          predicates:
+            - Path=/api/v1/**
+        - id: comment-service
+          uri: lb://comment-service
+          predicates:
+            - Path=/api/v1/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/**
