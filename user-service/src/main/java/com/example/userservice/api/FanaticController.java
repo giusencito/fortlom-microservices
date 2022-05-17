@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/fanatics")
+@RequestMapping("/api/v1/userservice/fanatics")
 public class FanaticController {
 
     @Autowired

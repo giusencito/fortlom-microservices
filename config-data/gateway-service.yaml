@@ -16,6 +16,10 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/userservice/**
         - id: publication-service
           uri: lb://publication-service
           predicates:
