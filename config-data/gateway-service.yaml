@@ -16,7 +16,7 @@ spring:
         locator:
           enabled: true
       routes:
-        -id: forum-service
-         uri: lb://forum-service
-         predicates:
-           - Path=/api/v1/**
+        - id: forum-service
+            uri: lb://forum-service
+            predicates:
+              - Path=/api/v1/**
