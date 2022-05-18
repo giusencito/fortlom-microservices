@@ -28,9 +28,9 @@ public class Report {
     private String ReportDescription;
 
 
-    private Long userMainid;
+    private Long userMainId;
 
-    private Long userReportedid;
+    private Long userReportedId;
 
 
 

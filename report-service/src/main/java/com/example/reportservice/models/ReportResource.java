@@ -11,8 +11,8 @@ public class ReportResource {
 
     private String reportDescription;
 
-    private Long userMainid;
+    private Long UserMainId;
 
-    private Long userReportedid;
+    private Long UserReportedId;
 
 }
