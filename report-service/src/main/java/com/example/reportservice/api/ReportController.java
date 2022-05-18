@@ -58,7 +58,7 @@ public class ReportController {
     }
     public ResponseEntity<ReportResource> fallBackCreateReport(@PathVariable Long UserMainId, @PathVariable Long UserReportedId, @RequestBody CreateReportResource request, RuntimeException e) {
 
-        return new ResponseEntity("El usuario " + UserMainId + "  no puede crear un reporte por el momento", HttpStatus.OK);
+        return new ResponseEntity("El usuario " + UserMainId + "  no puede crear un reporte para el usuario " +UserReportedId +" por el momento", HttpStatus.OK);
 
     }
 

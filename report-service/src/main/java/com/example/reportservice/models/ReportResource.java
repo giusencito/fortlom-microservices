@@ -9,7 +9,7 @@ import lombok.Setter;
 public class ReportResource {
     private Long id;
 
-    private String reportDescription;
+    private String ReportDescription;
 
     private Long UserMainId;
 
