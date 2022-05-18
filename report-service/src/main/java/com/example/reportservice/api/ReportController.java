@@ -9,8 +9,10 @@ import com.example.reportservice.models.UpdateReportResource;
 
 
 //import io.swagger.annotations.ApiOperation;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/reportservice")
 public class ReportController {
 
 
@@ -45,21 +47,52 @@ public class ReportController {
     public ReportResource getReportById(@PathVariable("reportId") Long followId) {
         return mapper.toResource(reportservice.getById(followId));
     }
+
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackCreateReport")
     //@ApiOperation(value="createReport",notes = "Esta consulta nos ayuda a crear un reporte segun el id del usuario principal y del usuario a reportar")
     @PostMapping("/usersmains/{UserMainId}/usersreports/{UserReportedId}/reports")
-    public ReportResource createReport(@PathVariable Long UserMainId, @PathVariable Long UserReportedId, @RequestBody CreateReportResource request) {
+    public ResponseEntity<ReportResource> createReport(@PathVariable Long UserMainId, @PathVariable Long UserReportedId, @RequestBody CreateReportResource request) {
         Report comment = mapping.map(request, Report.class);
-        return mapping.map(reportservice.create(UserMainId, UserReportedId, comment), ReportResource.class);
+
+        return ResponseEntity.ok(mapping.map(reportservice.create(UserMainId, UserReportedId, comment), ReportResource.class));
     }
+    public ResponseEntity<ReportResource> fallBackCreateReport(@PathVariable Long UserMainId, @PathVariable Long UserReportedId, @RequestBody CreateReportResource request, RuntimeException e) {
+
+        return new ResponseEntity("El usuario " + UserMainId + "  no puede crear un reporte por el momento", HttpStatus.OK);
+
+    }
+
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackGetAllReportsByMainId")
     //@ApiOperation(value="getAllReportsByMainId",notes = "Esta consulta nos retorna todos los reportes segun el id del usuario que va a reportar")
     @GetMapping("/usersmains/{UserMainId}/reports")
-    public Page<ReportResource> getAllReportsByMainId(@PathVariable Long UserMainId,Pageable pageable) {
-        return mapper.modelListToPage(reportservice.findByUserMainId(UserMainId), pageable);
+    public ResponseEntity<Page<ReportResource>> getAllReportsByMainId(@PathVariable Long UserMainId,Pageable pageable) {
+
+        return ResponseEntity.ok(mapper.modelListToPage(reportservice.findByUserMainId(UserMainId), pageable));
     }
+
+    public ResponseEntity<Page<ReportResource>> fallBackGetAllReportsByMainId(@PathVariable Long UserMainId,Pageable pageable, RuntimeException e) {
+
+        return new ResponseEntity("El usuario " + UserMainId + "  no puede mostrar sus  reportes por el momento", HttpStatus.OK);
+
+
+    }
+
+
+
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackGetAllReportsByReportedId")
     //@ApiOperation(value="getAllReportsByReportedId",notes = "Esta consulta nos retorna todos los reportes segun el id del usuario que es reportado")
     @GetMapping("/usersreports/{UserReportedId}/reports")
-    public Page<ReportResource> getAllReportsByReportedId(@PathVariable Long UserReportedId,Pageable pageable) {
-        return mapper.modelListToPage(reportservice.findByUserReportedId(UserReportedId), pageable);
+    public ResponseEntity<Page<ReportResource>> getAllReportsByReportedId(@PathVariable Long UserReportedId,Pageable pageable) {
+
+        return ResponseEntity.ok(mapper.modelListToPage(reportservice.findByUserReportedId(UserReportedId), pageable));
+    }
+    public ResponseEntity<Page<ReportResource>> fallBackGetAllReportsByReportedId(@PathVariable Long UserReportedId,Pageable pageable, RuntimeException e) {
+
+        return new ResponseEntity("El usuario " + UserReportedId + "  no puede mostrar sus  reportes por el momento", HttpStatus.OK);
+
+
+
+
     }
     //@ApiOperation(value="deleteReport",notes = "Esta consulta nos elimina un reporte segun su id")
     @DeleteMapping("/reports/{reportId}")
