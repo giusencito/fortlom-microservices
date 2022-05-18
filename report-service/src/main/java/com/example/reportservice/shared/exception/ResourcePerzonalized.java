@@ -1,4 +1,4 @@
-package com.example.forumservice.shared.execption;
+package com.example.reportservice.shared.exception;
 
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.fortlomisw.backend.resource.Report;
+package com.example.reportservice.models;
 
 import lombok.Getter;
 import lombok.Setter;

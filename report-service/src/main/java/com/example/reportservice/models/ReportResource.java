@@ -1,6 +1,6 @@
-package com.example.fortlomisw.backend.resource.Report;
+package com.example.reportservice.models;
 
-import com.example.fortlomisw.backend.resource.Person.PersonResource;
+
 import lombok.Getter;
 import lombok.Setter;
 

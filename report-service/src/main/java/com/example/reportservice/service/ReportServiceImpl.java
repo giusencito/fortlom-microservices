@@ -1,11 +1,9 @@
 package com.example.reportservice.service;
 
-import com.example.fortlomisw.backend.domain.model.entity.Person;
-import com.example.fortlomisw.backend.domain.model.entity.Report;
-import com.example.fortlomisw.backend.domain.persistence.ReportRepository;
-import com.example.fortlomisw.backend.domain.persistence.UserRepository;
-import com.example.fortlomisw.backend.domain.service.ReportService;
-import com.example.fortlomisw.shared.exception.ResourceNotFoundException;
+import com.example.reportservice.domain.model.entity.Report;
+import com.example.reportservice.domain.persistence.ReportRepository;
+import com.example.reportservice.domain.service.ReportService;
+import com.example.reportservice.shared.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -49,8 +47,8 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Report create(Long UserMainId, Long UserReportedId, Report request) {
 
-                    request.setUserReported(UserReportedId);
-                    request.setUserMain(UserMainId);
+                    request.setUserReportedid(UserReportedId);
+                    request.setUserMainid(UserMainId);
                     return reportRepository.save(request);
 
     }

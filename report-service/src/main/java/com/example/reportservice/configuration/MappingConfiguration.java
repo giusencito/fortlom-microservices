@@ -1,8 +1,6 @@
 package com.example.reportservice.configuration;
 
-import com.example.publicationservice.mapping.EventMapper;
-import com.example.publicationservice.mapping.MultimediaMapper;
-import com.example.publicationservice.mapping.PublicationMapper;
+import com.example.reportservice.mapping.ReportMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

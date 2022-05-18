@@ -1,4 +1,4 @@
-package com.example.forumservice.shared.execption;
+package com.example.reportservice.shared.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

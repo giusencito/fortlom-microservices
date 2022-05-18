@@ -1,4 +1,4 @@
-package com.example.forumservice.shared.mapping;
+package com.example.reportservice.shared.mapping;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
