@@ -6,6 +6,7 @@ import com.example.supportservice.domain.service.FollowService;
 import com.example.supportservice.mapping.FollowMapper;
 import com.example.supportservice.resource.follow.CreateFollowResource;
 import com.example.supportservice.resource.follow.FollowResource;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -33,15 +34,18 @@ public class FollowController {
     public FollowResource getFollowById(@PathVariable("followId") Long followId) {
         return mapper.toResource(followService.getById(followId));
     }
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackCreateFollow")
     @PostMapping("/fanatics/{fanaticId}/artists/{artistId}/follows")
-    public FollowResource createFollow(@PathVariable Long fanaticId, @PathVariable Long artistId, @RequestBody CreateFollowResource request) {
+    public ResponseEntity<FollowResource> createFollow(@PathVariable Long fanaticId, @PathVariable Long artistId, @RequestBody CreateFollowResource request) {
         Follow comment = mapping.map(request, Follow.class);
-        return mapping.map(followService.create(fanaticId, artistId, comment), FollowResource.class);
+        return ResponseEntity.ok(mapping.map(followService.create(fanaticId, artistId, comment), FollowResource.class));
     }
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackGetAllFollowsByFanaticId")
     @GetMapping("/fanatics/{fanaticId}/follows")
     public Page<FollowResource> getAllFollowsByFanaticId(@PathVariable Long fanaticId,Pageable pageable) {
         return mapper.modelListToPage(followService.followsByFanaticId(fanaticId), pageable);
     }
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackGetAllFollowsByArtistId")
     @GetMapping("/artists/{artistId}/follows")
     public Page<FollowResource> getAllFollowsByArtistId(@PathVariable Long artistId,Pageable pageable) {
         return mapper.modelListToPage(followService.followsByArtistId(artistId), pageable);
