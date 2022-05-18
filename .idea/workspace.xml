@@ -1,30 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="66116929-bde9-4918-b182-2fcf9ae10db5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/api/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/configuration/RestTemplateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/domain/model/entity/Content.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/domain/model/entity/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/domain/persistence/EventRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/domain/service/EventService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/mapping/EventMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/models/event/CreateEventResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/models/event/EventResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/service/EventServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/configuration/MappingConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/configuration/MappingConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/domain/model/entity/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/domain/model/entity/Publication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/models/publication/CreatePublicationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/models/publication/CreatePublicationResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/models/publication/PublicationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/models/publication/PublicationResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/service/PublicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/publication-service/src/main/java/com/example/publicationservice/service/PublicationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/api/ArtistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/api/ArtistController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/api/FanaticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/api/FanaticController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/persistence/ArtistRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/persistence/ArtistRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/persistence/FanaticRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/persistence/FanaticRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/service/ArtistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/service/ArtistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/service/FanaticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/domain/service/FanaticService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/service/ArtistServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/service/ArtistServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/service/FanaticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/userservice/service/FanaticServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/configuration/MappingConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/model/entity/Report.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/persistence/ReportRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/service/ReportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/mapping/ReportMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/service/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +32,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/report-service" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -60,5 +49,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
