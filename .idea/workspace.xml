@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66116929-bde9-4918-b182-2fcf9ae10db5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/configuration/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/service/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/service/ReportServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-data/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-service/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +46,8 @@
       <updated>1652663922471</updated>
       <workItem from="1652663926228" duration="115000" />
       <workItem from="1652839230609" duration="8171000" />
+      <workItem from="1652912394211" duration="1650000" />
+      <workItem from="1652914189389" duration="1506000" />
     </task>
     <servers />
   </component>
