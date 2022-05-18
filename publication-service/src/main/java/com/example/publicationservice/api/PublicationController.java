@@ -6,8 +6,10 @@ import com.example.publicationservice.mapping.PublicationMapper;
 import com.example.publicationservice.models.publication.CreatePublicationResource;
 import com.example.publicationservice.models.publication.PublicationResource;
 import com.example.publicationservice.models.publication.UpdatePublicationResource;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +39,20 @@ public class PublicationController {
         return mapper.toResource(publicationService.getById(publicationId));
     }
 
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackCreatePublication")
     @PostMapping("/artists/{artistId}/publications")
-    public PublicationResource createPublication(@PathVariable Long artistId,@RequestBody CreatePublicationResource request) {
+    public ResponseEntity<PublicationResource> createPublication(@PathVariable Long artistId,@RequestBody CreatePublicationResource request) {
         Publication publication = mapping.map(request, Publication.class);
-        return mapping.map(publicationService.create(artistId, publication), PublicationResource.class);
+        return ResponseEntity.ok(mapping.map(publicationService.create(artistId, publication), PublicationResource.class));
     }
+    public ResponseEntity<PublicationResource> fallBackCreatePublication(@PathVariable Long artistId,@RequestBody CreatePublicationResource request, RuntimeException e) {
+
+        return new ResponseEntity("El artista " + artistId + "  no puede crear una publicacion por el momento", HttpStatus.OK);
+
+    }
+
+
+
 
     @PutMapping("/publications/{publicationId}")
     public PublicationResource updatePublication(@PathVariable Long publicationId, @RequestBody UpdatePublicationResource request) {

@@ -5,8 +5,10 @@ import com.example.publicationservice.domain.service.EventService;
 import com.example.publicationservice.mapping.EventMapper;
 import com.example.publicationservice.models.event.CreateEventResource;
 import com.example.publicationservice.models.event.EventResource;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +45,16 @@ public class EventController {
     public Page<EventResource> getAllEventsByArtistId(@PathVariable Long artistId,Pageable pageable) {
         return mapper.modelListToPage(eventService.getEventsByArtistId(artistId), pageable);
     }
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackCreateEvent")
     @PostMapping("/artist/{artistId}/events")
-    public EventResource createEvent(@PathVariable Long artistId,@RequestBody CreateEventResource request) {
+    public ResponseEntity<EventResource> createEvent(@PathVariable Long artistId,@RequestBody CreateEventResource request) {
         Event event = mapping.map(request, Event.class);
-        return mapping.map(eventService.createEvent(artistId, event), EventResource.class);
+        return ResponseEntity.ok(mapping.map(eventService.createEvent(artistId, event), EventResource.class));
+    }
+    public ResponseEntity<EventResource> fallBackCreateEvent(@PathVariable Long artistId,@RequestBody CreateEventResource request, RuntimeException e) {
+        return new ResponseEntity("El artista " + artistId + "  no puede crear un evento por el momento", HttpStatus.OK);
+
+
     }
     @DeleteMapping("/event/{eventId}")
     public ResponseEntity<?> deleteEvent(@PathVariable Long eventId) {
