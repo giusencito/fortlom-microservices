@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication,Long>{
     List<Publication> findByArtistid(Long artistId);
+
+    boolean existsById(Long publicationId);
+
 }

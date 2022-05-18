@@ -44,4 +44,10 @@ public class ForumController {
     public ResponseEntity<?> deleteForum(@PathVariable Long forumId) {
         return forumService.deleteForum(forumId);
     }
+
+    @GetMapping("/check/{forumId}")
+    public boolean existforumid(@PathVariable("forumId") Long forumId){
+        return forumService.existsforum(forumId);
+    }
+
 }

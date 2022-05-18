@@ -96,7 +96,10 @@ private RestTemplate restTemplate;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, publicationId));
     }
 
-
+    @Override
+    public boolean existspublication(Long publicationId) {
+        return publicationRepository.existsById(publicationId);
+    }
 
 
 }

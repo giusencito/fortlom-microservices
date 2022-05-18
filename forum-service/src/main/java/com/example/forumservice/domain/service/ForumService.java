@@ -12,5 +12,7 @@ public interface ForumService {
     Forum createForum(Long userId,Forum Forum);
     List<Forum> getForumsByUserId(Long userId);
     ResponseEntity<?> deleteForum(Long forumId);
+    boolean existsforum(Long forumId);
+
 }
 

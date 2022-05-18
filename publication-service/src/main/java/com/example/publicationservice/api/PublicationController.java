@@ -68,4 +68,11 @@ public class PublicationController {
     public Page<PublicationResource> getAllPublicationByArtistId(@PathVariable Long artistId,Pageable pageable) {
         return mapper.modelListToPage(publicationService.getPublicationByArtistId(artistId), pageable);
     }
+
+    @GetMapping("/check/{publicationId}")
+    public boolean existsartistid(@PathVariable("publicationId") Long publicationId){
+        return publicationService.existspublication(publicationId);
+    }
+
+
 }

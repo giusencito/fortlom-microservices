@@ -15,5 +15,6 @@ public interface PublicationService {
     Publication update(Long publicationId, Publication request);
     List<Publication> getPublicationByArtistId(Long artistId);
     ResponseEntity<?> delete(Long publicationId);
+    boolean existspublication(Long publicationId);
 
 }
