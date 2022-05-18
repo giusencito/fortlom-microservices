@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: feature/adjust
+          default-label: feature/restTemplate-service-support-
           uri: https://github.com/giusencito/fortlom-microservices
           search-paths: config-data
 
