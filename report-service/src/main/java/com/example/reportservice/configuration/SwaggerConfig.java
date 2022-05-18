@@ -1,5 +1,6 @@
 package com.example.reportservice.configuration;
-/*
+
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,38 +19,51 @@ import java.util.Collections;
 import java.util.List;
 import springfox.documentation.builders.RequestHandlerSelectors;
 
-
-
 @Configuration
 @EnableSwagger2
 @EnableWebMvc
 public class SwaggerConfig implements WebMvcConfigurer{
 
-
-
-    public static final String PATH = "/myapi";
-
+    public static final String PATH = "/reportserviceswagger";
 
     @Bean
     public Docket swaggerApiConfig(){
-        final String host = "localhost:8080";
+        final var host = "localhost:8080";
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .securityContexts(Arrays.asList(securityContext()))
+                .securitySchemes(Arrays.asList(apiKey()))
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
 
+
+
+
+    }
+
+    private SecurityContext securityContext(){
+        return SecurityContext.builder().securityReferences(defaultAuth()).build();
+    }
+    private ApiKey apiKey(){
+        return new ApiKey("JWT", "Authorization", "header");
+    }
+    private List<SecurityReference> defaultAuth(){
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
     }
 
     private ApiInfo apiInfo(){
         return new ApiInfo(
-                "Report Microservice API",
-                "Api for fortlom developers",
+                "Fortlom API",
+                "Api fro fortlom developers",
                 "1.0",
                 "http://codmind.com/terms",
-                new Contact("Javaboys", "https://fortlom-landingpage-fas.web.app/", "javaboys@gmail.com"),
+                new Contact("Javaboys", "https://codmind.com", "javaboys@gmail.com"),
                 "LICENSE",
                 "LICENSE URL",
                 Collections.emptyList()
@@ -64,10 +78,10 @@ public class SwaggerConfig implements WebMvcConfigurer{
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        final String apiDocs = "/v2/api-docs";
-        final String configUi = "/swagger-resources/configuration/ui";
-        final String configSecurity = "/swagger-resources/configuration/security";
-        final String resources = "/swagger-resources";
+        final var apiDocs = "/v2/api-docs";
+        final var configUi = "/swagger-resources/configuration/ui";
+        final var configSecurity = "/swagger-resources/configuration/security";
+        final var resources = "/swagger-resources";
 
         registry.addRedirectViewController(PATH + apiDocs, apiDocs).setKeepQueryParams(true);
         registry.addRedirectViewController(PATH + resources, resources);
@@ -79,4 +93,13 @@ public class SwaggerConfig implements WebMvcConfigurer{
 
     }
 
-}*/
+
+
+
+
+
+
+
+
+
+}
