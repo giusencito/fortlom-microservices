@@ -70,7 +70,7 @@ public class PublicationController {
     }
 
     @GetMapping("/check/{publicationId}")
-    public boolean existsartistid(@PathVariable("publicationId") Long publicationId){
+    public boolean existspublication(@PathVariable("publicationId") Long publicationId){
         return publicationService.existspublication(publicationId);
     }
 

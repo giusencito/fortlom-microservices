@@ -85,7 +85,16 @@ private RestTemplate restTemplate;
 
     @Override
     public List<Publication> getPublicationByArtistId(Long artistId) {
-        return publicationRepository.findByArtistid(artistId);
+
+        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
+        if(check){
+
+        return publicationRepository.findByArtistid(artistId);}
+        else {
+            throw  new ResourcePerzonalized("id inexistente");
+
+
+        }
     }
 
     @Override

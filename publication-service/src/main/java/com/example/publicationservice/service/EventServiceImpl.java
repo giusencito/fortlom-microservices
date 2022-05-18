@@ -90,7 +90,15 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> getEventsByArtistId(Long artistId) {
-        return eventRepository.findByArtistid(artistId);
+
+        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
+        if(check){
+
+        return eventRepository.findByArtistid(artistId);}
+        else {
+            throw  new ResourcePerzonalized("id inexistente");
+
+        }
     }
 
     @Override
