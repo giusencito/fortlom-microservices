@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66116929-bde9-4918-b182-2fcf9ae10db5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/configuration/RestTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/configuration/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/domain/model/entity/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/domain/model/entity/Report.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/models/CreateReportResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/models/CreateReportResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/models/ReportResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/models/ReportResource.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/service/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/${project.build.directory}/classes/com/example/reportservice/service/ReportServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/model/entity/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/model/entity/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/persistence/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/domain/persistence/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/models/CreateReportResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/models/CreateReportResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/models/ReportResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/models/ReportResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/service/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/example/reportservice/service/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/publication-service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user-service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -53,7 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652663922471</updated>
       <workItem from="1652663926228" duration="115000" />
-      <workItem from="1652839230609" duration="6271000" />
+      <workItem from="1652839230609" duration="8171000" />
     </task>
     <servers />
   </component>
