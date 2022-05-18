@@ -19,7 +19,7 @@ spring:
         - id: report-service
           uri: lb://report-service
           predicates:
-            - Path=/api/v1/reportservice/**
+            - Path=/api/v1/reportservice/**, /myapi/reportservice/**
         - id: comment-service
           uri: lb://comment-service
           predicates:

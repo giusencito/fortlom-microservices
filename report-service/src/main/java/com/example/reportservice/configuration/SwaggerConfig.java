@@ -24,7 +24,7 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 @EnableWebMvc
 public class SwaggerConfig implements WebMvcConfigurer{
 
-    public static final String PATH = "/api/v1/reportservice";
+    public static final String PATH = "/myapi/reportservice";
 
     @Bean
     public Docket swaggerApiConfig(){
