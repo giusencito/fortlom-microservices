@@ -41,9 +41,15 @@ public class EventController {
     public EventResource getEventById(@PathVariable Long eventId) {
         return mapper.toResource(eventService.getEventById(eventId));
     }
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackGetAllEventsByArtistId")
     @GetMapping("/artist/{artistId}/events")
-    public Page<EventResource> getAllEventsByArtistId(@PathVariable Long artistId,Pageable pageable) {
-        return mapper.modelListToPage(eventService.getEventsByArtistId(artistId), pageable);
+    public ResponseEntity<Page<EventResource>> getAllEventsByArtistId(@PathVariable Long artistId,Pageable pageable) {
+
+        return ResponseEntity.ok(mapper.modelListToPage(eventService.getEventsByArtistId(artistId), pageable));
+    }
+    public ResponseEntity<Page<EventResource>> fallBackGetAllEventsByArtistId(@PathVariable Long artistId,Pageable pageable, RuntimeException e) {
+        return new ResponseEntity("El artista " + artistId + "  no puede acceder sus eventos por el momento", HttpStatus.OK);
+
     }
     @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackCreateEvent")
     @PostMapping("/artist/{artistId}/events")

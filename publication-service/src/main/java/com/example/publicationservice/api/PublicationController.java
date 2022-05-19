@@ -64,11 +64,18 @@ public class PublicationController {
         return publicationService.delete(publicationId);
     }
 
+    @CircuitBreaker(name = "userCB", fallbackMethod = "fallBackGetAllPublicationByArtistId")
     @GetMapping("/artists/{artistId}/publications")
-    public Page<PublicationResource> getAllPublicationByArtistId(@PathVariable Long artistId,Pageable pageable) {
-        return mapper.modelListToPage(publicationService.getPublicationByArtistId(artistId), pageable);
-    }
+    public ResponseEntity<Page<PublicationResource>> getAllPublicationByArtistId(@PathVariable Long artistId,Pageable pageable) {
 
+        return ResponseEntity.ok(mapper.modelListToPage(publicationService.getPublicationByArtistId(artistId), pageable));
+    }
+    public ResponseEntity<Page<PublicationResource>> fallBackGetAllPublicationByArtistId(@PathVariable Long artistId,Pageable pageable) {
+
+        return new ResponseEntity("El artista " + artistId + "  no puede acceder sus publicaciones por el momento", HttpStatus.OK);
+
+
+    }
     @GetMapping("/check/{publicationId}")
     public boolean existspublication(@PathVariable("publicationId") Long publicationId){
         return publicationService.existspublication(publicationId);
