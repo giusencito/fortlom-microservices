@@ -5,13 +5,18 @@ import com.example.userservice.domain.persistence.ArtistRepository;
 import com.example.userservice.domain.service.ArtistService;
 import com.example.userservice.shared.execption.ResourceNotFoundException;
 import com.example.userservice.shared.execption.ResourcePerzonalized;
+import com.example.userservice.util.ImageUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -95,5 +100,49 @@ public class ArtistServiceImpl implements ArtistService {
             artistRepository.save(post);
             return  post;
         }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
+    }
+
+    @Override
+    public Artist updateprofile(Long userId, Artist request) {
+        return artistRepository.findById(userId).map(user ->{
+            user.setRealname(request.getRealname());
+            user.setLastname(request.getLastname());
+            user.setEmail(request.getEmail());
+            artistRepository.save(user);
+            return user;
+
+
+        }).orElseThrow(() -> new ResourceNotFoundException("Person", userId));
+    }
+
+    @Override
+    public Artist updatepassword(Long userId, Artist request) {
+        return null;
+    }
+
+    @Override
+    public void updatephoto(Long artistId, MultipartFile file) throws IOException {
+        artistRepository.findById(artistId).map(post->{
+            try {
+                post.setContent(ImageUtility.compressImage(file.getBytes()));
+                post.setImageprofiletype(file.getContentType());
+                artistRepository.save(post);
+                return ResponseEntity.ok().build();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+
+        }).orElseThrow(() -> new ResourceNotFoundException("User", artistId));
+    }
+
+    @Override
+    public ResponseEntity<byte[]> getprofileimage(Long userID) {
+        Optional<Artist> db=artistRepository.findById(userID);
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.valueOf(db.get().getImageprofiletype()))
+                .body(ImageUtility.decompressImage(db.get().getContent()));
     }
 }

@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/userservice/artists")
@@ -64,6 +67,27 @@ public class ArtistController {
     public ArtistResource updateFacebookAccount(@PathVariable Long artistId, @RequestBody UpdateArtistResource request){
         return mapper.toResource(artistService.setFacebookAccount(artistId,mapper.toModel(request)));
     }
+
+    @PutMapping("/users/{userID}/updatephoto")
+    public void createComment( @PathVariable Long userID,@RequestParam("file") MultipartFile file) throws IOException {
+        artistService.updatephoto(userID,file);
+    }
+
+    @PutMapping("/users/changeprofile/{userId}")
+    public ArtistResource updateprofile(@PathVariable Long userId, @RequestBody UpdateArtistResource request) {
+        return mapper.toResource(artistService.updateprofile(userId, mapper.toModel(request)));
+    }
+    @PutMapping("/users/changepassword/{userId}")
+    public ArtistResource updatepassword(@PathVariable Long userId, @RequestBody UpdateArtistResource request) {
+        return mapper.toResource(artistService.updatepassword(userId, mapper.toModel(request)));
+    }
+
+
+    @GetMapping("/users/onlyimage/{userID}")
+    public ResponseEntity<byte[]> getImage (@PathVariable("userID") Long userID) throws IOException{
+        return  artistService.getprofileimage(userID);
+    }
+
 
 
 
