@@ -48,4 +48,23 @@ public class ArtistController {
     public ResponseEntity<?> deletePost(@PathVariable Long artistId) {
         return artistService.delete(artistId);
     }
+
+
+
+    @PutMapping("/artist/{artistId}/InstagramAccount")
+    public ArtistResource updateInstagramAccount(@PathVariable Long artistId, @RequestBody UpdateArtistResource request){
+        return mapper.toResource(artistService.setInstagramAccount(artistId,mapper.toModel(request)));
+
+    }
+    @PutMapping("/artist/{artistId}/TwitterAccount")
+    public ArtistResource updateTwitterAccount(@PathVariable Long artistId, @RequestBody UpdateArtistResource request){
+        return mapper.toResource(artistService.setTwitterAccount(artistId,mapper.toModel(request)));
+    }
+    @PutMapping("/artist/{artistId}/FacebookAccount")
+    public ArtistResource updateFacebookAccount(@PathVariable Long artistId, @RequestBody UpdateArtistResource request){
+        return mapper.toResource(artistService.setFacebookAccount(artistId,mapper.toModel(request)));
+    }
+
+
+
 }

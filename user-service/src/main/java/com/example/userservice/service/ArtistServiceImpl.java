@@ -69,4 +69,31 @@ public class ArtistServiceImpl implements ArtistService {
     public boolean existsartist(Long artistId) {
         return artistRepository.existsById(artistId);
     }
+
+    @Override
+    public Artist setInstagramAccount(Long artistId, Artist request) {
+        return artistRepository.findById(artistId).map(post->{
+            post.setInstagramLink(request.getInstagramLink());
+            artistRepository.save(post);
+            return  post;
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
+    }
+
+    @Override
+    public Artist setFacebookAccount(Long artistId, Artist request) {
+        return artistRepository.findById(artistId).map(post->{
+            post.setFacebookLink(request.getFacebookLink());
+            artistRepository.save(post);
+            return  post;
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
+    }
+
+    @Override
+    public Artist setTwitterAccount(Long artistId, Artist request) {
+        return artistRepository.findById(artistId).map(post->{
+            post.setTwitterLink(request.getTwitterLink());
+            artistRepository.save(post);
+            return  post;
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
+    }
 }
