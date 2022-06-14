@@ -4,5 +4,5 @@ services:
     image: config
     ports:
       - 8081:8081
-    
+
 
