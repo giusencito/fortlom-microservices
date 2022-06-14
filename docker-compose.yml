@@ -4,5 +4,56 @@ services:
     image: config
     ports:
       - 8081:8081
+  discovery:
+    image: discovery
+    ports:
+      - 8761:8761
+    depends_on:
+      - config
+  gateway:
+    image: gateway
+    ports:
+      - 8080:8080
+    depends_on:
+      - config
+      - discovery
+  user-service:
+    image: user-service
+    depends_on:
+      - config
+      - discovery
+      - gateway
+  publication-service:
+    image: publication-service
+    depends_on:
+      - config
+      - discovery
+      - gateway
+  report-service:
+    image: report-service
+    depends_on:
+      - config
+      - discovery
+      - gateway
+  support-service:
+    image: support-service
+    depends_on:
+      - config
+      - discovery
+      - gateway
+  forum-service:
+    image: forum-service
+    depends_on:
+      - config
+      - discovery
+      - gateway
+  comment-service:
+    image: comment-service
+    depends_on:
+      - config
+      - discovery
+      - gateway
+
+
 
 
