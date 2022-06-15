@@ -17,6 +17,8 @@ services:
     depends_on:
       - config-service
       - discover-service
+    links:
+      - discover-service
 
 
 
