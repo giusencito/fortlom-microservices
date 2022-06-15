@@ -36,6 +36,55 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  support-service:
+    image: support-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  publication-service:
+    image: publication-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  forum-service:
+    image: forum-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  comment-service:
+    image: comment-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+
 
 
 
