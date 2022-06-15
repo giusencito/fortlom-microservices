@@ -10,11 +10,7 @@ services:
       - 8761:8761
     depends_on:
       - config
-  user-service:
-    image: user-service
-    depends_on:
-      - discovery
-      - config
+  
 
 
 
