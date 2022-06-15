@@ -9,8 +9,7 @@ spring:
           uri: https://github.com/giusencito/fortlom-microservices
           search-paths: config-data
 
-  application:
-    name: config-service
+
 
 
 
