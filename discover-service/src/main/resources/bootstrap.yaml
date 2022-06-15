@@ -4,12 +4,4 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://config-service:8081
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+      uri: http://localhost:8081
