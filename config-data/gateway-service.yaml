@@ -8,7 +8,7 @@ eureka:
     service-url:
       default-zone: http://discover-service:8761/eureka
   instance:
-    hostname: discover-service
+    hostname: gateway-service
 spring:
   cloud:
     gateway:
