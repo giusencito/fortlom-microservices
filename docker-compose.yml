@@ -2,7 +2,9 @@ version: '3'
 services:
   discovery:
     image: discovery
-    
+    ports:
+      - 8761:8761
+
 
 
 
