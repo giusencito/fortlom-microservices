@@ -10,7 +10,8 @@ services:
       - 8761:8761
     depends_on:
       - config-service
- 
+    links:
+      - config-service
 
 
 
