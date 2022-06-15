@@ -1,9 +1,15 @@
 version: '3'
 services:
+  config:
+    image: config
+    ports:
+      - 8081:8081
   discovery:
     image: discovery
     ports:
       - 8761:8761
+    depends_on:
+      - config
 
 
 
