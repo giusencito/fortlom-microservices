@@ -10,6 +10,13 @@ services:
       - 8761:8761
     depends_on:
       - config-service
+  gateway-service:
+    image: gateway-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-service
+      - discover-service
 
 
 
