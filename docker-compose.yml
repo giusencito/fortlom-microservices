@@ -4,8 +4,7 @@ services:
     image: discovery
     ports:
       - 8761:8761
-    depends_on:
-      - config
+    
 
 
 
