@@ -22,6 +22,8 @@ services:
     links:
       - config-service
       - discover-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
 
 
 
