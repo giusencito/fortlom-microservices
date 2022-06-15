@@ -12,14 +12,16 @@ services:
       - config-service
     links:
       - config-service
-  user-service:
-    image: user-service
+  gateway-service:
+    image: gateway-service
+    ports:
+      - 8080:8080
     depends_on:
       - config-service
       - discover-service
     links:
-      - discover-service
       - config-service
+      - discover-service
 
 
 
