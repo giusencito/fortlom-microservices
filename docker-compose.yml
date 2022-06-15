@@ -4,7 +4,12 @@ services:
     image: config-service
     ports:
       - 8081:8081
-
+  discover-service:
+    image: discover-service
+    ports:
+      - 8761:8761
+    depends_on:
+      - config-service
 
 
 
