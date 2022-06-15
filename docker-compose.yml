@@ -1,21 +1,22 @@
 version: '3'
 services:
-  config-service:
-    image: config-service
-    container_name: config-container
-    ports:
-      - 8081:8081
-
-    restart: on-failure
   discover-service:
     image: discover-service
     container_name: discover-container
     ports:
       - 8761:8761
+  config-service:
+    image: config-service
+    container_name: config-container
+    ports:
+      - 8081:8081
     depends_on:
-      - config-service
+      - discover-service
     links:
-        - config-service
+      - discover-service
+
+
+
   user-service:
     image: user-service
     container_name: user-service-container

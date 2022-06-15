@@ -8,4 +8,3 @@ eureka:
     register-with-eureka: false
     service-url:
       default-zone: http://discover-service:8761/eureka
-
