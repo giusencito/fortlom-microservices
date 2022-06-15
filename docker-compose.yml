@@ -1,21 +1,35 @@
 version: '3'
 services:
-  config:
-    image: config
+  config-service:
+    image: config-service
+    container_name: config-container
     ports:
       - 8081:8081
-    networks:
-      fortlom:
-  discovery:
-    image: discovery
+
+    restart: on-failure
+  discover-service:
+    image: discover-service
+    container_name: discover-container
     ports:
       - 8761:8761
     depends_on:
-      - config
-    networks:
-      fortlom:
-networks:
-  fortlom:
+      - config-service
+    links:
+        - config-service
+  user-service:
+    image: user-service
+    container_name: user-service-container
+    restart: always
+    links:
+      - discover-service
+      - config-service
+    depends_on:
+      - discover-service
+      - config-service
+
+
+
+
 
 
 
