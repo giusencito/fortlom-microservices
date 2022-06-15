@@ -12,6 +12,8 @@ services:
       - config
   user-service:
     image: user-service
+    links:
+      - discovery
     depends_on:
       - discovery
       - config
