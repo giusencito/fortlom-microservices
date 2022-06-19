@@ -5,6 +5,7 @@ package com.example.userservice.models.Artist;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Setter

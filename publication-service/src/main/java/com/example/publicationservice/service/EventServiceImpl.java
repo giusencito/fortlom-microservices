@@ -45,7 +45,8 @@ public class EventServiceImpl implements EventService {
     public Event createEvent(Long Artist, Event request) {
 
         boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+Artist,boolean.class);
-        if(check){
+        boolean check2= restTemplate.getForObject("http://user-service/api/v1/userservice/checkpremium/check/"+Artist,boolean.class);
+        if(check && check2){
             request.setArtistid(Artist);
             Date date = new Date();
             request.setRegisterdate(date);

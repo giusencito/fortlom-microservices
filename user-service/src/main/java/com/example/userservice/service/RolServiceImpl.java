@@ -30,4 +30,14 @@ public class RolServiceImpl implements RolService {
     public List<Rol> getAll() {
         return rolRepository.findAll();
     }
+
+    @Override
+    public void seed() {
+        Arrays.stream(DEFAULT_ROLES).forEach(name -> {
+            RolName roleName = RolName.valueOf(name);
+            if(!rolRepository.existsByName(roleName)) {
+                rolRepository.save((new Rol()).withName(roleName));
+            }
+        } );
+    }
 }

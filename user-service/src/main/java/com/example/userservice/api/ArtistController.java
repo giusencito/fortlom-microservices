@@ -33,6 +33,10 @@ public class ArtistController {
     public boolean existsartistid(@PathVariable("artistId") Long artistId){
         return artistService.existsartist(artistId);
     }
+    @GetMapping("/checkpremium/{artistId}")
+    public boolean checkremiumartistid(@PathVariable("artistId") Long artistId){
+        return artistService.ispremium(artistId);
+    }
     @GetMapping("{artistId}")
     public ArtistResource getUserById(@PathVariable("artistId") Long artistId) {
         return mapper.toResource(artistService.getById(artistId));

@@ -5,6 +5,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @With
@@ -51,4 +54,11 @@ public class Person {
     private byte[] content;
 
     private String imageprofiletype;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Rol> roles=new HashSet<>();
+
 }

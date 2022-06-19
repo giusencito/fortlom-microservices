@@ -18,6 +18,7 @@ public interface ArtistService {
     ResponseEntity<?> delete(Long artistId);
     Artist create(Artist artist);
     boolean existsartist(Long artistId);
+    boolean ispremium(Long artistId);
     Artist setInstagramAccount(Long artistId,Artist request);
     Artist setFacebookAccount(Long artistId,Artist request);
     Artist setTwitterAccount(Long artistId,Artist request);

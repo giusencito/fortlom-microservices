@@ -1,8 +1,11 @@
 package com.example.userservice.service;
 
 import com.example.userservice.domain.model.entity.Artist;
+import com.example.userservice.domain.model.entity.Rol;
+import com.example.userservice.domain.model.enumeration.RolName;
 import com.example.userservice.domain.persistence.ArtistRepository;
 import com.example.userservice.domain.service.ArtistService;
+import com.example.userservice.domain.service.RolService;
 import com.example.userservice.shared.execption.ResourceNotFoundException;
 import com.example.userservice.shared.execption.ResourcePerzonalized;
 import com.example.userservice.util.ImageUtility;
@@ -15,8 +18,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -27,6 +32,8 @@ public class ArtistServiceImpl implements ArtistService {
     @Autowired
     private ArtistRepository artistRepository;
 
+    @Autowired
+    RolService rolService;
     @Override
     public List<Artist> getAll() {
         return artistRepository.findAll();
@@ -66,6 +73,9 @@ public class ArtistServiceImpl implements ArtistService {
             throw  new ResourcePerzonalized("ya exsite este nombre de usuario");
         if (artistRepository.existsByEmail(artist.getEmail()))
             throw  new ResourcePerzonalized("ya exsite este correo electronico");
+        Set<Rol> roles = new HashSet<>();
+        roles.add(rolService.findByName(RolName.Role_Artist).get());
+        artist.setRoles(roles);
 
         return artistRepository.save(artist);
     }
@@ -73,6 +83,23 @@ public class ArtistServiceImpl implements ArtistService {
     @Override
     public boolean existsartist(Long artistId) {
         return artistRepository.existsById(artistId);
+    }
+
+    @Override
+    public boolean ispremium(Long artistId) {
+        return artistRepository.findById(artistId).map(post->{
+
+            for (Rol rol:post.getRoles()){
+                String r=rol.getName().name();
+
+                if (r.equals("Premium_Artist")){
+                    return true;
+                }
+            }
+            return false;
+
+
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
     }
 
     @Override
