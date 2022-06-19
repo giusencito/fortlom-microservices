@@ -74,6 +74,7 @@ public class ArtistServiceImpl implements ArtistService {
         if (artistRepository.existsByEmail(artist.getEmail()))
             throw  new ResourcePerzonalized("ya exsite este correo electronico");
         Set<Rol> roles = new HashSet<>();
+        artist.setBann(false);
         roles.add(rolService.findByName(RolName.Role_Artist).get());
         artist.setRoles(roles);
 

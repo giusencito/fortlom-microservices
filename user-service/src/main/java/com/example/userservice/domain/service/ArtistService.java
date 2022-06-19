@@ -28,4 +28,8 @@ public interface ArtistService {
     void updatephoto(Long artistId, MultipartFile file) throws IOException;
 
     ResponseEntity<byte[]> getprofileimage(Long userID);
+
+
+
+
 }

@@ -33,5 +33,5 @@ public class ArtistResource {
 
     private String twitterLink;
 
-
+    boolean bann;
 }

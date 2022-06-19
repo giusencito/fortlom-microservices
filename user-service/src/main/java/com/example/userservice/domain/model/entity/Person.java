@@ -61,4 +61,7 @@ public class Person {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Rol> roles=new HashSet<>();
 
+
+    boolean bann;
+
 }
