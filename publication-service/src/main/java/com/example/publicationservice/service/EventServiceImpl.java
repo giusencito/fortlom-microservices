@@ -46,7 +46,7 @@ public class EventServiceImpl implements EventService {
 
         boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+Artist,boolean.class);
         boolean check2= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/checkpremium/"+Artist,boolean.class);
-                                                       
+
         if(check && check2){
             request.setArtistid(Artist);
             Date date = new Date();
