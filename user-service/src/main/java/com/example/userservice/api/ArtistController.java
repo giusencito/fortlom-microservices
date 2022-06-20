@@ -4,6 +4,7 @@ import com.example.userservice.mapping.ArtistMapper;
 import com.example.userservice.models.Artist.ArtistResource;
 import com.example.userservice.models.Artist.CreateArtistResource;
 import com.example.userservice.models.Artist.UpdateArtistResource;
+import com.example.userservice.shared.execption.ResourcePerzonalized;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Pageable;
@@ -92,6 +93,10 @@ public class ArtistController {
         return  artistService.getprofileimage(userID);
     }
 
+    @PutMapping("/upgrade/{artistId}")
+    public ArtistResource updateArtistPremium(@PathVariable("artistId") Long artistId){
+        return mapper.toResource(artistService.upgradeartist(artistId));
+    }
 
 
 

@@ -19,6 +19,7 @@ public interface ArtistService {
     Artist create(Artist artist);
     boolean existsartist(Long artistId);
     boolean ispremium(Long artistId);
+    Artist upgradeartist(Long artistId);
     Artist setInstagramAccount(Long artistId,Artist request);
     Artist setFacebookAccount(Long artistId,Artist request);
     Artist setTwitterAccount(Long artistId,Artist request);

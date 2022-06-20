@@ -2,6 +2,7 @@ package com.example.userservice.models.Artist;
 
 
 
+import com.example.userservice.domain.model.entity.Rol;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,4 +35,6 @@ public class ArtistResource {
     private String twitterLink;
 
     boolean bann;
+
+    Set<Rol> roles;
 }

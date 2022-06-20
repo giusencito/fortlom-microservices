@@ -173,4 +173,16 @@ public class ArtistServiceImpl implements ArtistService {
                 .contentType(MediaType.valueOf(db.get().getImageprofiletype()))
                 .body(ImageUtility.decompressImage(db.get().getContent()));
     }
+
+    @Override
+    public Artist  upgradeartist(Long artistId) {
+        return artistRepository.findById(artistId).map(post->{
+            Set<Rol> roles = new HashSet<>();
+            roles.add(rolService.findByName(RolName.Premium_Artist).get());
+            post.setRoles(roles);
+            artistRepository.save(post);
+            return post;
+
+        }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, artistId));
+    }
 }
