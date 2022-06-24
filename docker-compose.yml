@@ -1,0 +1,107 @@
+version: '3'
+services:
+  config-service:
+    image: config-service
+    ports:
+      - 8081:8081
+  discover-service:
+    image: discover-service
+    ports:
+      - 8761:8761
+    depends_on:
+      - config-service
+    links:
+      - config-service
+  gateway-service:
+    image: gateway-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - config-service
+      - discover-service
+    links:
+      - config-service
+      - discover-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  user-service:
+    image: user-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  support-service:
+    image: support-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  publication-service:
+    image: publication-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  forum-service:
+    image: forum-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  comment-service:
+    image: comment-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

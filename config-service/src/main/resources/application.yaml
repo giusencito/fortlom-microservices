@@ -5,12 +5,13 @@ spring:
     config:
       server:
         git:
-          default-label: feature/restTemplate-service-comment
+          default-label: feature/docker
           uri: https://github.com/giusencito/fortlom-microservices
           search-paths: config-data
-
   application:
     name: config-service
+
+
 
 
 
