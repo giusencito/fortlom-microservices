@@ -84,6 +84,18 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
+  report-service:
+    image: report-service
+    depends_on:
+      - config-service
+      - discover-service
+      - gateway-service
+    links:
+      - config-service
+      - discover-service
+      - gateway-service
+    environment:
+      - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
 
 
 
