@@ -1,37 +1,31 @@
 version: '3'
 services:
-  config-service:
-    image: public.ecr.aws/j3l9t1g6/config-service
-    ports:
-      - 8081:8081
+
   discover-service:
     image: public.ecr.aws/j3l9t1g6/discover-service
     ports:
       - 8761:8761
-    depends_on:
-      - config-service
-    links:
-      - config-service
+
   gateway-service:
     image: public.ecr.aws/j3l9t1g6/gateway-service
     ports:
       - 8080:8080
     depends_on:
-      - config-service
+
       - discover-service
     links:
-      - config-service
+
       - discover-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   user-service:
     image: public.ecr.aws/j3l9t1g6/user-service
     depends_on:
-      - config-service
+
       - discover-service
       - gateway-service
     links:
-      - config-service
+
       - discover-service
       - gateway-service
     environment:
@@ -39,11 +33,11 @@ services:
   support-service:
     image: public.ecr.aws/j3l9t1g6/support-service
     depends_on:
-      - config-service
+
       - discover-service
       - gateway-service
     links:
-      - config-service
+
       - discover-service
       - gateway-service
     environment:
@@ -51,11 +45,11 @@ services:
   publication-service:
     image: public.ecr.aws/j3l9t1g6/publication-service
     depends_on:
-      - config-service
+
       - discover-service
       - gateway-service
     links:
-      - config-service
+
       - discover-service
       - gateway-service
     environment:
@@ -63,11 +57,11 @@ services:
   forum-service:
     image: public.ecr.aws/j3l9t1g6/forum-service
     depends_on:
-      - config-service
+
       - discover-service
       - gateway-service
     links:
-      - config-service
+
       - discover-service
       - gateway-service
     environment:
@@ -75,7 +69,7 @@ services:
   comment-service:
     image: public.ecr.aws/j3l9t1g6/comment-service
     depends_on:
-      - config-service
+
       - discover-service
       - gateway-service
     links:
@@ -87,11 +81,11 @@ services:
   report-service:
     image: public.ecr.aws/j3l9t1g6/report-service
     depends_on:
-      - config-service
+
       - discover-service
       - gateway-service
     links:
-      - config-service
+
       - discover-service
       - gateway-service
     environment:
