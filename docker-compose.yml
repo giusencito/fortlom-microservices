@@ -1,10 +1,7 @@
 version: '3'
 services:
 
-  discover-service:
-    image: public.ecr.aws/j3l9t1g6/discover-service
-    ports:
-      - 8761:8761
+
 
   gateway-service:
     image: public.ecr.aws/j3l9t1g6/gateway-service
