@@ -1,12 +1,7 @@
 version: '3'
 services:
 
-  discover-service:
-    image: public.ecr.aws/j3l9t1g6/discover-service
-    ports:
-      - 8761:8761
-    networks:
-      - fortlom
+
 
   gateway-service:
     image: public.ecr.aws/j3l9t1g6/gateway-service
@@ -20,8 +15,6 @@ services:
       - discover-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
   user-service:
     image: public.ecr.aws/j3l9t1g6/user-service
     depends_on:
@@ -34,8 +27,6 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
   support-service:
     image: public.ecr.aws/j3l9t1g6/support-service
     depends_on:
@@ -48,8 +39,6 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
   publication-service:
     image: public.ecr.aws/j3l9t1g6/publication-service
     depends_on:
@@ -62,8 +51,6 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
   forum-service:
     image: public.ecr.aws/j3l9t1g6/forum-service
     depends_on:
@@ -76,8 +63,6 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
   comment-service:
     image: public.ecr.aws/j3l9t1g6/comment-service
     depends_on:
@@ -90,8 +75,6 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
   report-service:
     image: public.ecr.aws/j3l9t1g6/report-service
     depends_on:
@@ -104,11 +87,6 @@ services:
       - gateway-service
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
-    networks:
-      - fortlom
-
-networks:
-  fortlom:
 
 
 
