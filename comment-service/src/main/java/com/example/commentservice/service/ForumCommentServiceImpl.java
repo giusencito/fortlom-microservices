@@ -46,22 +46,15 @@ public class ForumCommentServiceImpl implements ForumCommentService {
     @Override
     public ForumComment create(Long userId, Long forumId, ForumComment request) {
 
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + userId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + userId,boolean.class);
-        boolean check3=  restTemplate.getForObject("http://forum-service/api/v1/check/" + forumId,boolean.class);
 
-        if(check1 && check3||check2 && check3){
+
+
             Date date = new Date();
             request.setForumid(forumId);
             request.setPersonid(userId);
             request.setRegisterdate(date);
             return forumcommentRepository.save(request);
-        }else{
 
-            throw  new ResourcePerzonalized("id inexistente");
-
-
-        }
 
 
 
@@ -72,13 +65,9 @@ public class ForumCommentServiceImpl implements ForumCommentService {
     @Override
     public List<ForumComment> getForumCommentByForumId(Long forumId) {
 
-        boolean check=  restTemplate.getForObject("http://forum-service/api/v1/check/" + forumId,boolean.class);
-        if(check) {
-            return forumcommentRepository.findByForumid(forumId);
-        }else {
-            throw  new ResourcePerzonalized("id inexistente");
 
-        }
+            return forumcommentRepository.findByForumid(forumId);
+
     }
 
     @Override

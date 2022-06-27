@@ -53,35 +53,29 @@ public class FollowServiceImpl implements FollowService {
 
     @Override
     public Follow create(Long fanaticId, Long ArtistId, Follow request) {
-        boolean check1= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+ArtistId,boolean.class);
-        boolean check2= restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/"+fanaticId,boolean.class);
-        if(check1 && check2){
+
 
             request.setArtistid(ArtistId);
             request.setFanaticid(fanaticId);
             return followRepository.save(request);
 
-        }else {
-            throw  new ResourcePerzonalized("id inexistente");
-        }
+
 
 
     }
 
     @Override
     public List<Follow> followsByFanaticId(Long FanaticId) {
-        boolean check1= restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/"+FanaticId,boolean.class);
-        if(check1)
+
         return followRepository.findByFanaticid(FanaticId);
-        else throw new ResourcePerzonalized("id inexistente de Fanatico");
+
     }
 
     @Override
     public List<Follow> followsByArtistId(Long ArtistId) {
-        boolean check1= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+ArtistId,boolean.class);
-        if(check1)
+
         return followRepository.findByArtistid(ArtistId);
-        else throw new ResourcePerzonalized("id inexistente de Artista");
+
     }
 
     @Override

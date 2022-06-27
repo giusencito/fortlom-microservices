@@ -47,31 +47,19 @@ public class ForumServiceImpl implements ForumService {
 
     @Override
     public Forum createForum(Long userId, Forum request) {
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + userId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + userId,boolean.class);
 
-        if(check1||check2) {
             request.setPersonid(userId);
             return forumRepository.save(request);
-        }else {
-            throw  new ResourcePerzonalized("id inexistente");
 
-        }
     }
 
 
 
     @Override
     public List<Forum> getForumsByUserId(Long userId) {
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + userId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + userId,boolean.class);
 
-        if(check1||check2) {
         return forumRepository.findByPersonid(userId);
-        }else {
-            throw  new ResourcePerzonalized("id inexistente");
 
-        }
     }
 
     @Override

@@ -50,17 +50,15 @@ private RestTemplate restTemplate;
     public Publication create(Long artistId, Publication request) {
 
 
-        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
-        if(check){
+        //boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
+
 
             Date date = new Date();
             request.setArtistid(artistId);
             request.setRegisterdate(date);
             request.setLikes((long)0);
             return publicationRepository.save(request);
-        }else {
-            throw  new ResourcePerzonalized("id inexistente");
-        }
+
 
 
 
@@ -86,15 +84,11 @@ private RestTemplate restTemplate;
     @Override
     public List<Publication> getPublicationByArtistId(Long artistId) {
 
-        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
-        if(check){
-
-        return publicationRepository.findByArtistid(artistId);}
-        else {
-            throw  new ResourcePerzonalized("id inexistente");
+        //boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
 
 
-        }
+        return publicationRepository.findByArtistid(artistId);
+
     }
 
     @Override

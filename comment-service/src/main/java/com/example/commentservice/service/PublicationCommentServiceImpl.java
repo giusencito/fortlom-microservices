@@ -44,23 +44,17 @@ public class PublicationCommentServiceImpl implements PublicationCommentService 
     @Override
     public PublicationComment create(Long userId, Long publicationId, PublicationComment request) {
 
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + userId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + userId,boolean.class);
-        boolean check3=  restTemplate.getForObject("http://publication-service/api/v1/contentservice/check/" + publicationId,boolean.class);
 
 
 
-        if(check1 && check3||check2 && check3) {
+
+
             Date date = new Date();
             request.setPublicationid(publicationId);
             request.setPersonid(userId);
             request.setRegisterdate(date);
             return publicationCommentRepository.save(request);
-        }else {
 
-            throw  new ResourcePerzonalized("id inexistente");
-
-        }
 
     }
 
@@ -69,13 +63,9 @@ public class PublicationCommentServiceImpl implements PublicationCommentService 
     @Override
     public List<PublicationComment> getCommentByPublicationId(Long publicationId) {
 
-        boolean check=  restTemplate.getForObject("http://publication-service/api/v1/contentservice/check/" + publicationId,boolean.class);
-        if(check){
 
-        return publicationCommentRepository.findByPublicationid(publicationId);}
-        else {
-          throw  new ResourcePerzonalized("id inexistente");
-        }
+
+        return publicationCommentRepository.findByPublicationid(publicationId);
     }
 
     @Override

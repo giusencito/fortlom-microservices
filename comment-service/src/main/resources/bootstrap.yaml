@@ -4,4 +4,4 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://host.docker.internal:8081
+      uri: http://52.207.221.129:8081

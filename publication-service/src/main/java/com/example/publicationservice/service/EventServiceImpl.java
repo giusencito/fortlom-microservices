@@ -44,18 +44,16 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event createEvent(Long Artist, Event request) {
 
-        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+Artist,boolean.class);
-        boolean check2= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/checkpremium/"+Artist,boolean.class);
+        //boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+Artist,boolean.class);
+        //boolean check2= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/checkpremium/"+Artist,boolean.class);
 
-        if(check && check2){
+
             request.setArtistid(Artist);
             Date date = new Date();
             request.setRegisterdate(date);
             request.setLikes((long)0);
             return eventRepository.save(request);
-        }else{
-            throw  new ResourcePerzonalized("id inexistente");
-        }
+
 
 
 
@@ -93,14 +91,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> getEventsByArtistId(Long artistId) {
 
-        boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
-        if(check){
+        //boolean check= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+artistId,boolean.class);
 
-        return eventRepository.findByArtistid(artistId);}
-        else {
-            throw  new ResourcePerzonalized("id inexistente");
 
-        }
+        return eventRepository.findByArtistid(artistId);
+
     }
 
     @Override

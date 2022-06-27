@@ -51,18 +51,18 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public Report create(Long UserMainId, Long UserReportedId, Report request) {
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + UserMainId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + UserReportedId,boolean.class);
-        boolean check3 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + UserMainId,boolean.class);
-        boolean check4 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + UserReportedId,boolean.class);
+        //boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + UserMainId,boolean.class);
+        //boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + UserReportedId,boolean.class);
+        //boolean check3 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + UserMainId,boolean.class);
+        //boolean check4 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + UserReportedId,boolean.class);
 
-        if(check1 && check2 || check1 && check4 || check3 && check4 || check3 && check2){
+
             request.setUserReportedId(UserReportedId);
             request.setUserMainId(UserMainId);
             return reportRepository.save(request);
-        }else{
-            throw new ResourcePerzonalized("ids inexistentes de los usuarios que son y que van a reportar");
-        }
+
+
+
 
     }
 
@@ -73,21 +73,18 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public List<Report> findByUserMainId(Long UserMainId) {
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + UserMainId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + UserMainId,boolean.class);
-        if(check1 || check2)
+
         return reportRepository.findByUserMainId(UserMainId);
-        else throw new ResourcePerzonalized("id no existente del usuario principal");
+
     }
 
     @Override
     public List<Report> findByUserReportedId(Long UserReportedId) {
-        boolean check1 = restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/" + UserReportedId,boolean.class);
-        boolean check2 = restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/" + UserReportedId,boolean.class);
 
-        if(check1 || check2)
+
+
         return reportRepository.findByUserReportedId(UserReportedId);
-        else throw new ResourcePerzonalized("id no existente del usuario a reportar");
+
     }
 
     @Override

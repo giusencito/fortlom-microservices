@@ -49,19 +49,14 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public Rate create(Long FanaticId, Long ArtistId, Rate request) {
-        boolean check1= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+ArtistId,boolean.class);
-        boolean check2= restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/"+FanaticId,boolean.class);
-        if(check1&&check2){
+
 
             request.setArtistid(ArtistId);
             request.setFanaticid(FanaticId);
             return rateRepository.save(request);
 
 
-        }else {
-            throw  new ResourcePerzonalized("id inexistente");
 
-        }
 
 
 
@@ -83,18 +78,16 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public List<Rate> ratesByFanaticId(Long FanaticId) {
-        boolean check1= restTemplate.getForObject("http://user-service/api/v1/userservice/fanatics/check/"+FanaticId,boolean.class);
-        if(check1)
+
         return rateRepository.findByFanaticid(FanaticId);
-        else throw  new ResourcePerzonalized("id inexistente de Fanatico");
+
     }
 
     @Override
     public List<Rate> ratesByArtistId(Long ArtistId) {
-        boolean check1= restTemplate.getForObject("http://user-service/api/v1/userservice/artists/check/"+ArtistId,boolean.class);
-        if(check1)
+
         return rateRepository.findByArtistid(ArtistId);
-        else throw new ResourcePerzonalized("id inexistente de Artista");
+
     }
 
     @Override
