@@ -1,11 +1,11 @@
 version: '3'
 services:
   config-service:
-    image: public.ecr.aws/j3l9t1g6/config-service
+    image: config-service
     ports:
       - 8081:8081
   discover-service:
-    image: public.ecr.aws/j3l9t1g6/discover-service
+    image: discover-service
     ports:
       - 8761:8761
     depends_on:
@@ -13,7 +13,7 @@ services:
     links:
       - config-service
   gateway-service:
-    image: public.ecr.aws/j3l9t1g6/gateway-service
+    image: gateway-service
     ports:
       - 8080:8080
     depends_on:
@@ -25,7 +25,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   user-service:
-    image: public.ecr.aws/j3l9t1g6/user-service
+    image: user-service
     depends_on:
       - config-service
       - discover-service
@@ -37,7 +37,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   support-service:
-    image: public.ecr.aws/j3l9t1g6/support-service
+    image: support-service
     depends_on:
       - config-service
       - discover-service
@@ -49,7 +49,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   publication-service:
-    image: public.ecr.aws/j3l9t1g6/publication-service
+    image: publication-service
     depends_on:
       - config-service
       - discover-service
@@ -61,7 +61,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   forum-service:
-    image: public.ecr.aws/j3l9t1g6/forum-service
+    image: forum-service
     depends_on:
       - config-service
       - discover-service
@@ -73,7 +73,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   comment-service:
-    image: public.ecr.aws/j3l9t1g6/comment-service
+    image: comment-service
     depends_on:
       - config-service
       - discover-service
@@ -85,7 +85,7 @@ services:
     environment:
       - eureka.client.service-url.defaultZone=http://discover-service:8761/eureka/
   report-service:
-    image: public.ecr.aws/j3l9t1g6/report-service
+    image: report-service
     depends_on:
       - config-service
       - discover-service
