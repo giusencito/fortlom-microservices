@@ -6,7 +6,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://54.147.168.82:8761/eureka
+      default-zone: http://discover-service:8761/eureka
   instance:
     hostname: gateway-service
 spring:
