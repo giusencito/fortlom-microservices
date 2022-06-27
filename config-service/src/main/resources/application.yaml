@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: master
+          default-label: feature/docker
           uri: https://github.com/giusencito/fortlom-microservices
           search-paths: config-data
   application:
